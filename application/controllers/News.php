@@ -12,39 +12,27 @@ class News extends CI_Controller {
     {
 		parse_str($_SERVER['QUERY_STRING'], $_GET);
 
+		$this->load->library('pagination');//加载分页类
+		$this->load->model('news_model');//加载books模型
+		$res = $this->db->get('myblog');//进行一次查询            
+		$config['base_url'] = base_url().'index.php/news/index';//设置分页的url路径              
+		$config['total_rows'] = $res->num_rows();//得到数据库中的记录的总条数             
+		$config['per_page'] = '3';//每页记录数
+		$config['prev_link'] = 'Previous ';
+		$config['next_link'] = ' Next';
+		
+		$this->pagination->initialize($config);//分页的初始化
 		
 		if (!empty($_GET['key'])) {
 			$key = $_GET['key'];
 			$w = " title like '%$key%'";
-
+			
 		}else{
 			$w=1;
 			
 		}
-
 		
-		$this->load->library('pagination');
-
-		$config['base_url'] = 'http://localhost/CI_blog/index.php/news/index/';
-		$config['total_rows'] = $this->db->count_all('myblog');  //获得表中的所有行
-		//echo $config['total_rows'];
-		//$config['total_rows'] = 9;
-		$config['per_page'] = 5;
-		
-		$config['full_tag_open'] = '<p>';
-		$config['full_tag_close'] = '</p>';
-
-		$this->pagination->initialize($config);
-		
-		$this->load->model('books_model');
-		$data['results'] = $this->books_model->get_books($config['per_page'],$this->uri->segment(3));
-		
-		
-		$data['page_list'] = $this->pagination->create_links();
-		echo $this->pagination->create_links();
-		
-		$data['blogs'] = $this->news_model->blogs($w);
-		$data['title'] = 'News archive';
+		$data['blogs'] = $this->news_model->blogs($w,$config['per_page'],$this->uri->segment(3));//得到数据库记录
 		
 		$this->load->view('templates/header');
 		$this->load->view('news/index', $data);
@@ -72,23 +60,13 @@ class News extends CI_Controller {
 	public function del($id = NULL)
 	{
 		$this->news_model->del_blogs($id);
-		$data['blogs'] = $this->news_model->blogs();
-		
-		//echo "<script>alert('delete success!');</script>";
+
 		//通过js跳回原页面
 		echo'
 			<script language="javascript"> 
 				alert("create success!"); 
-				window.location.href="http://localhost/CI_blog/index.php/news/create"; 
+				window.location.href="http://localhost/CI_blog/index.php/news/"; 
 			</script> ';		
-		/*
-		echo'
-		<script language="javascript"> 
-			alert("delete success!"); 
-			window.history.back(-1); 
-		</script> ';
-		*/
-		
 	}
 	
 	

@@ -6,18 +6,13 @@ class News_model extends CI_Model {
         $this->load->database();
     }
 	//获取所有blog
-	public function blogs($w = FALSE)
-	{
-		$offset = $this->uri->segment(3); // 本例中，偏移量位于uri的第三段
-		echo "================================";
-		echo $offset;
-		echo "================================";
-		//$this->db->limit($config['per_page'], $offset); // limit(每页显示数量，偏移量)
+	public function blogs($w,$num,$offset)
+	{	
 		
-
+		
 		if($w == 1)
-		{
-			$query = $this->db->query("select * from myblog where $w order by id desc limit 5;");
+		{	
+			$query = $this->db->get('myblog',$num,$offset);
 			return $query->result_array();
 		
 		}elseif(strpos($w,"title like"))
@@ -26,11 +21,9 @@ class News_model extends CI_Model {
 			return $query->result_array();
 		
 		}else{
-			//$query = $this->db->get("myblog");
-			//return $query->result_array();
-			$query=$this->db->get('myblog',5,$this->uri->segment(3));
-			$data['list'] = $this->db->get("myblog")->result_array();
-			return $data['list'];
+		
+			$query = $this->db->get('myblog',$num,$offset);
+			return $query->result_array();
 			
 		}
 		
