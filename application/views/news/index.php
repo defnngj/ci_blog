@@ -4,10 +4,10 @@
       <div class="container">
         <nav class="blog-nav">
           <a class="blog-nav-item active" href="#">Blog</a>
-          <a class="blog-nav-item" href="http://localhost/CI_blog/index.php/news/create">Create</a>
+          <a class="blog-nav-item" href="//localhost/CI_blog/index.php/news/create">Create</a>
           <a class="blog-nav-item" href="#">Press</a>
           <a class="blog-nav-item" href="#">New hires</a>
-          <a class="blog-nav-item" href="#">About</a>
+          <a class="blog-nav-item" href="//localhost/CI_blog/index.php/login">Login</a>
 		  <form class="navbar-form navbar-right" method="get">
             <div class="form-group">
               <input type="text" name="key" placeholder="sreach" class="form-control">
@@ -70,6 +70,9 @@
           <div class="sidebar-module sidebar-module-inset">
             <h4>About</h4>
             <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
+          </div>
+		  <div class="sidebar-module sidebar-module-inset">
+            <?php echo $this->calendar->generate(); ?>
           </div>
           <div class="sidebar-module">
             <h4>Archives</h4>

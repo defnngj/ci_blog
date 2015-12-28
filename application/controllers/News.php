@@ -10,6 +10,8 @@ class News extends CI_Controller {
 
     public function index()
     {
+		$this->load->library('calendar'); //加载日历类
+
 		parse_str($_SERVER['QUERY_STRING'], $_GET);
 
 		$this->load->library('pagination');//加载分页类
@@ -42,6 +44,7 @@ class News extends CI_Controller {
 
     public function view($id = NULL)
 	{
+		$this->load->library('calendar'); 
 
 		$data['blogs_item'] = $this->news_model->up_blogs($id);
 
@@ -51,6 +54,7 @@ class News extends CI_Controller {
 		}
 
 		$data['title'] = $data['blogs_item']['title'];
+		
 
 		$this->load->view('templates/header');
 		$this->load->view('./news/view', $data);
@@ -69,9 +73,11 @@ class News extends CI_Controller {
 			</script> ';		
 	}
 	
-	
+
 	public function create()
 	{
+		$this->load->library('calendar'); //加载日历类
+		
 		$this->load->helper('form');
 		$this->load->library('form_validation');
 
@@ -100,5 +106,17 @@ class News extends CI_Controller {
 			
 			//$this->load->view('news');
 		}
+		
 	}
+	/*
+	public function login()
+	{
+		//echo "blog login";
+		//$this->load->view('templates/header');
+		$this->load->view('news/login');
+		$this->load->view('templates/footer');
+		
+
+	}
+	*/
 }
