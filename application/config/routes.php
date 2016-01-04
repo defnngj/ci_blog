@@ -65,5 +65,5 @@ $route['news'] = 'news';
 //$route['(:any)'] = 'pages/view/$1';
 $route['default_controller'] = 'pages/view';
 
-$route['login/llogin'] = 'news/llogin';
+//$route['login/llogin'] = 'news/llogin';
 

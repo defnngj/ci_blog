@@ -3,11 +3,11 @@
     <div class="blog-masthead">
       <div class="container">
         <nav class="blog-nav">
-          <a class="blog-nav-item" href="http://localhost/CI_blog/index.php/news/news">Blog</a>
-          <a class="blog-nav-item" href="http://localhost/CI_blog/index.php/news/create">Create</a>
+          <a class="blog-nav-item" href="//localhost/CI_blog/index.php/news/news">Blog</a>
+          <a class="blog-nav-item" href="//localhost/CI_blog/index.php/news/create">Create</a>
           <a class="blog-nav-item" href="#">Press</a>
           <a class="blog-nav-item" href="#">New hires</a>
-          <a class="blog-nav-item" href="#">About</a>
+          <a class="blog-nav-item" href="//localhost/CI_blog/index.php/login">Login</a>
         </nav>
       </div>
     </div>
@@ -30,8 +30,6 @@
 				<div class="main">
 					<?php echo $blogs_item['contents']; ?>
 				</div>
-			
-	
 		    </div><!-- /.blog-post -->
 		
 		</div><!-- /.blog-main -->

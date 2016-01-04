@@ -10,16 +10,16 @@ class News extends CI_Controller {
 
     public function index()
     {
-		$this->load->library('calendar'); //加载日历类
+		$this->load->library('calendar');  //加载日历类
 
 		parse_str($_SERVER['QUERY_STRING'], $_GET);
 
-		$this->load->library('pagination');//加载分页类
-		$this->load->model('news_model');//加载books模型
-		$res = $this->db->get('myblog');//进行一次查询            
-		$config['base_url'] = base_url().'index.php/news/index';//设置分页的url路径              
-		$config['total_rows'] = $res->num_rows();//得到数据库中的记录的总条数             
-		$config['per_page'] = '3';//每页记录数
+		$this->load->library('pagination'); //加载分页类
+		$this->load->model('news_model');   //加载books模型
+		$res = $this->db->get('myblog');    //进行一次查询            
+		$config['base_url'] = base_url().'index.php/news/index';    //设置分页的url路径              
+		$config['total_rows'] = $res->num_rows();    //得到数据库中的记录的总条数             
+		$config['per_page'] = '3';   //每页记录数
 		$config['prev_link'] = 'Previous ';
 		$config['next_link'] = ' Next';
 		
@@ -108,15 +108,5 @@ class News extends CI_Controller {
 		}
 		
 	}
-	/*
-	public function login()
-	{
-		//echo "blog login";
-		//$this->load->view('templates/header');
-		$this->load->view('news/login');
-		$this->load->view('templates/footer');
-		
 
-	}
-	*/
 }

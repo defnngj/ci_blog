@@ -21,7 +21,6 @@ class News_model extends CI_Model {
 			return $query->result_array();
 		
 		}else{
-		
 			$query = $this->db->get('myblog',$num,$offset);
 			return $query->result_array();
 			

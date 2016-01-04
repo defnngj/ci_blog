@@ -13,11 +13,16 @@ class Login extends News {
 		
 	}
 	function check() {
+		$this->load->library('encrypt');  
+		
         $this -> load -> model('user_test');
         $user = $this -> user_test -> u_select($_POST['u_name']);
-		$pawd = $this -> user_test -> u_select($_POST['u_pawd']);
+		//var_dump($user);
+		$passwd = $user[0] -> upawd;
+		$pawd = $this->encrypt->decode($passwd);
+		
         if ($user) {
-            if ($user[0] -> upawd == $_POST['u_pawd']) {
+            if ($pawd == $_POST['u_pawd']) {
                 //echo 'pw right';
 				echo "<script>window.location.href='".site_url('news/')."'</script>";
                 $this -> load -> library('session');

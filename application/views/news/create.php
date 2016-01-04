@@ -9,11 +9,10 @@
           <a class="blog-nav-item active" href="#">Create</a>
           <a class="blog-nav-item" href="#">Press</a>
           <a class="blog-nav-item" href="#">New hires</a>
-          <a class="blog-nav-item" href="#">About</a>
+          <a class="blog-nav-item" href="//localhost/CI_blog/index.php/login">Login</a>
         </nav>
       </div>
     </div>
-
 
     <div class="container">
 
@@ -44,10 +43,8 @@
 
 			</form>
 	
-            
           </div><!-- /.blog-post -->
 
-		  
         </div><!-- /.blog-main -->
 
         <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
@@ -86,11 +83,6 @@
         </div><!-- /.blog-sidebar -->
 
       </div><!-- /.row -->
-	<!-- 配置文件 -->
-	
-    
-    
-    
 
     </div><!-- /.container -->
 	
